@@ -1,0 +1,17 @@
+# ============================================================================
+# dsh-whale-widget-plus —— DSH bundle patch
+# ============================================================================
+# 这是插件的"挂载声明"。DSH 启动时按 bundle 层栈叠加各插件 patch，
+# 本文件会把余额挂件插入 Web profile 的配置树。
+#
+# ⚠️ 下面的 name 必须与 package.json 的包名一致，否则 DSH 找不到模块。
+#
+# 安装方式：
+#   dsh plugin --profile web add github:LinQovo/dsh-whale-widget-plus
+# 或本地开发安装（在仓库根目录执行）：
+#   dsh plugin --profile web add link:.
+# ============================================================================
+
+- insert:
+    - id: dsh-whale-widget-plus
+      name: dsh-whale-widget-plus

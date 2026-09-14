@@ -1,0 +1,20 @@
+# 模型权重（*.onnx）不进仓库：
+#   u2netp 4.4MB 还好，但 IS-Net 有 170MB（GitHub 单文件上限 100MB），
+#   而且模型是第三方（rembg 发布包，MIT）——需要时用工具下载即可：
+#     py tools/download_model.py --list
+#     py tools/download_model.py --model isnet-general-use
+*.onnx
+
+# 运行时数据（用户上传的形象/音效、记账账本、挂件尺寸）
+.dshw-characters/
+.dshw-sounds/
+.dshw-size.json
+.dshw-usage.json
+.dshw-probe
+
+node_modules/
+__pycache__/
+*.pyc
+*.log
+Thumbs.db
+desktop.ini

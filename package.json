@@ -1,0 +1,49 @@
+{
+  "name": "dsh-whale-widget-plus",
+  "version": "0.3.0",
+  "description": "DSH 界面右下角的余额挂件增强版：可换任意角色形象（内置洛天依）+ 上传立绘自动 AI 抠图 + 自定义音效",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "balance",
+    "widget",
+    "vtuber",
+    "luotianyi",
+    "background-removal",
+    "matting",
+    "u2net",
+    "isnet",
+    "cordis"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "assets",
+    "tools",
+    "models/README.md",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinQovo/dsh-whale-widget-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LinQovo/dsh-whale-widget-plus/issues"
+  },
+  "homepage": "https://github.com/LinQovo/dsh-whale-widget-plus#readme",
+  "author": "LinQovo",
+  "contributors": [
+    "MeteorNOX (original dsh-whale-widget)"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

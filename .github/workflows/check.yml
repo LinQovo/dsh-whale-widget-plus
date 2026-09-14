@@ -1,0 +1,45 @@
+name: check
+
+# 轻量 CI：不改任何东西，只做语法与工具自检，保证 main 上的代码是可加载的。
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Host plugin parses as ESM + embedded widget script parses
+        run: |
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            const text = fs.readFileSync('lib/index.js', 'utf8');
+            const mod = await import('./lib/index.js');
+            if (!mod.apply || !mod.name) throw new Error('missing exports');
+            const start = text.indexOf('const WIDGET_JS = \`') + 'const WIDGET_JS = \`'.length;
+            const end = text.indexOf('\`\n\n\nconst name =', start);
+            if (end === -1) throw new Error('WIDGET_JS not found');
+            const client = text.slice(start, end).replace(/\\\\([\\\\\`\$nrt])/g, (m, c) => c === 'n' ? '\n' : c);
+            new Function(client);
+            console.log('OK: host + client script parse');
+          "
+
+      - name: package.json sanity
+        run: node -e "const p=require('./package.json'); if(!p.dsh||!p.dsh.bundle) throw new Error('missing dsh.bundle'); if(!p.files.includes('lib')) throw new Error('files must ship lib'); console.log('OK:', p.name, p.version)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Tools compile + CLI --list works without models
+        run: |
+          python -m py_compile tools/matting.py tools/download_model.py tools/audio_cut.py tools/preview_layout.py
+          python tools/matting.py --list

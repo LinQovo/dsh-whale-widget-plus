@@ -1,7 +1,7 @@
 {
   "name": "dsh-whale-widget-plus",
-  "version": "0.3.0",
-  "description": "DSH 界面右下角的余额挂件增强版：可换任意角色形象（内置洛天依）+ 上传立绘自动 AI 抠图 + 自定义音效",
+  "version": "0.4.0",
+  "description": "DSH 界面右下角的余额挂件增强版：可换任意角色形象（内置洛天依）+ 上传立绘自动 AI 抠图 + 自定义音效 + 桌宠模式",
   "keywords": [
     "dsh",
     "dsh-plugin",
@@ -15,7 +15,8 @@
     "matting",
     "u2net",
     "isnet",
-    "cordis"
+    "cordis",
+    "desktop-pet"
   ],
   "type": "module",
   "main": "lib/index.js",

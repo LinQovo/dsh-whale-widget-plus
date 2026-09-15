@@ -150,6 +150,16 @@ curl http://127.0.0.1:3080/dsh-whale/balance.json      # 余额
 - **换了形象后气泡位置不对**：用「位置」行微调，数值按形象单独保存。
 - **音效没声音**：确认音量滑块不为 0；自定义音效是否被浏览器自动播放策略拦下（先点一下挂件再试听）。
 
+## 桌宠模式（PET_MODE）
+
+挂件脚本内置一个**桌宠模式**开关：宿主只要在加载 `widget.js` 之前设 `window.__dshwPetMode = true`，
+就得到一个「不查余额、不记消耗」的桌面宠物版本 —— 形象、AI 抠图、音效、台词气泡、拖拽吸附、
+按压 Q 弹全部保留，菜单里会自动隐藏「用量 / 峰谷 / 每轮消耗 / 避让滚动条」这些与余额和浏览器相关的行，
+台词池也会换成桌宠版（去掉要钱的那几句）。
+
+DSH 里这个标志不存在，所以插件行为与以前完全一致。基于它的 Electron 桌宠实现见
+`dsh-whale-pet`（同一个作者的 `dsh-whale-*` 系列项目）。
+
 ## 致谢
 
 - 原项目：[MeteorNOX/DeepSeek-Balance-Whale-Widget](https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget)（MIT）——小鲸鱼形象、气泡、吸附、记账等全部来自原作者
